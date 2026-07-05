@@ -31,6 +31,11 @@ public class SecurityConfig {
     /**
      * Configures the security filter chain.
      *
+     * <p>CSRF protection is intentionally disabled because this is a stateless REST API
+     * that authenticates exclusively via JWT tokens carried in the {@code Authorization}
+     * header, not via session cookies. CSRF attacks rely on the browser automatically
+     * including credentials (e.g. cookies), which does not apply here.</p>
+     *
      * @param http the {@link HttpSecurity} builder
      * @return the configured {@link SecurityFilterChain}
      * @throws Exception if an error occurs during configuration
